@@ -7,7 +7,7 @@ on:
 jobs:
   install:
     env:
-      MONGO_URI: mongodb+srv://akshat21:aku1985pika@cluster0.ew0oz.mongodb.net/job-app?retryWrites=true&w=majority
+      MONGO_URL: mongodb+srv://akshat21:aku1985pika@cluster0.ew0oz.mongodb.net/job-app?retryWrites=true&w=majority
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
