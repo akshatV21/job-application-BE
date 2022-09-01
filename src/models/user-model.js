@@ -12,6 +12,7 @@ const userSchema = new Schema(
     jobsApplied: { type: [Types.ObjectId], default: [], ref: "job_posts" },
     savedJobPosts: { type: [Types.ObjectId], default: [], ref: "job_posts" },
     skills: { type: [String], required: true },
+    lookingFor: { type: [String] },
   },
   { timestamps: true }
 )

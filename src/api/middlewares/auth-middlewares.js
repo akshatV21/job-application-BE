@@ -8,7 +8,16 @@ const validateRegisterRequest = (req, res, next) => {
   if (!req.body.email) return res.status(400).json({ success: false, message: CONTENTS.NULL_EMAIL_MSG })
   if (!req.body.password) return res.status(400).json({ success: false, message: CONTENTS.NULL_PASSWORD_MSG })
 
-  req.user = { username: req.body.username, email: req.body.email, password: req.body.password }
+  if (!Array.isArray(req.body.skills)) req.body.skills = String(req.body.skills).join()
+
+  req.user = {
+    username: req.body.username,
+    email: req.body.email,
+    password: req.body.password,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    skills: req.body.skills,
+  }
   next()
 }
 
