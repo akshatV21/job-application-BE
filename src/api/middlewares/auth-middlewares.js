@@ -1,3 +1,6 @@
+const { verify } = require("jsonwebtoken")
+const UserModel = require("../../models/user-model")
+const CONFIG = require("../../config/config")
 const CONTENTS = require("../../contents/index")
 
 const validateRegisterRequest = (req, res, next) => {
@@ -29,4 +32,21 @@ const validateLoginRequest = (req, res, next) => {
   next()
 }
 
-module.exports = { validateRegisterRequest, validateLoginRequest }
+const authorizeUser = (req, res, next) => {
+  const authHeader = req.headers["authorization"]
+  if (!authHeader) return res.status(401).json({ success: false, message: CONTENTS.NULL_AUTH_HEADER })
+
+  const token = authHeader.split(" ")[1]
+  verify(token, CONFIG.JWT_SECRET_KEY, (err, token) => {
+    if (err) {
+      res.status(401).json({ success: false, message: CONTENTS.INVALID_TOKEN_MSG })
+      return
+    }
+
+    const user = await UserModel.findById(token)
+    req.user = user
+    next()
+  })
+}
+
+module.exports = { validateRegisterRequest, validateLoginRequest, authorizeUser }

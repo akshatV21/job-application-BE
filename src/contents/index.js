@@ -18,5 +18,7 @@ CONTENTS.NULL_INPUT_MSG = "Please enter your username or email!!"
 CONTENTS.REGISTER_ERR_MSG = username => `Could not register ${username}!!`
 CONTENTS.USER_NOT_FOUND_MSG = "Cannot find user"
 CONTENTS.INVALID_PASSWORD_MSG = "Invalid password"
+CONTENTS.NULL_AUTH_HEADER = "Please log in first!!"
+CONTENTS.INVALID_TOKEN_MSG = "You are unauthorized!!"
 
 module.exports = CONTENTS
