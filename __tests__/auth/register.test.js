@@ -1,4 +1,3 @@
-const { Types } = require("mongoose")
 const app = require("../../src/app")
 const { connectToMongo, disconnectToMongo } = require("../../src/mongo")
 const CONTENTS = require("../../src/contents")
