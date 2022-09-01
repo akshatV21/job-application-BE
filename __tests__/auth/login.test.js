@@ -19,7 +19,7 @@ describe("POST /api/auth/login", () => {
     const response = await request.post(`/api/auth/login`).send({ input: "invalidUser", password: "password" })
     const expected = { success: false, message: CONTENTS.USER_NOT_FOUND_MSG }
 
-    expect(response.statusCode).toEqual(400)
+    expect(response.statusCode).toEqual(404)
     expect(response.body).toEqual(expected)
   })
 
