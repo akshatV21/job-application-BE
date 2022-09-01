@@ -21,4 +21,12 @@ const validateRegisterRequest = (req, res, next) => {
   next()
 }
 
-module.exports = { validateRegisterRequest }
+const validateLoginRequest = (req, res, next) => {
+  if (!req.body.input) return res.status(400).json({ success: false, message: CONTENTS.NULL_INPUT_MSG })
+  if (!req.body.password) return res.status(400).json({ success: false, message: CONTENTS.NULL_PASSWORD_MSG })
+
+  req.user = { input: req.body.input, pwd: req.body.password }
+  next()
+}
+
+module.exports = { validateRegisterRequest, validateLoginRequest }

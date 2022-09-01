@@ -15,4 +15,17 @@ const httpRegisterUser = async (req, res) => {
   }
 }
 
-module.exports = { httpRegisterUser }
+const httpLoginUser = async (req, res) => {
+  const { input, pwd } = req.user
+  const user = await UserModel.findByInput(input)
+
+  if (!user) return res.status(404).json({ success: false, message: CONTENTS.USER_NOT_FOUND_MSG })
+  if (!user.passwordMatches(pwd)) return res.status(400).json({ success: false, message: CONTENTS.INVALID_PASSWORD_MSG })
+
+  user._doc.token = user.generateToken()
+  const { password, ...rest } = user._doc
+
+  res.status(200).json({ success: true, message: CONTENTS.LOGGEDIN_SUCCESS_MSG(user.username), user: rest })
+}
+
+module.exports = { httpRegisterUser, httpLoginUser }

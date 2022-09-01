@@ -1,5 +1,7 @@
-const { hashSync } = require("bcrypt")
+const { hashSync, compareSync } = require("bcrypt")
+const { sign } = require("jsonwebtoken")
 const { Schema, Types, model } = require("mongoose")
+const CONFIG = require("../config/config")
 
 const userSchema = new Schema(
   {
@@ -23,6 +25,27 @@ userSchema.pre("save", function (next) {
   this.password = hashSync(this.password, 4)
   next()
 })
+
+// statics
+userSchema.statics.findByInput = async function (input) {
+  const userSearchByUsername = await this.findOne({ username: input })
+  if (userSearchByUsername) return userSearchByUsername
+
+  const userSearchByEmail = await this.findOne({ email: input })
+  if (userSearchByEmail) return userSearchByEmail
+
+  return null
+}
+
+// methods
+userSchema.methods.passwordMatches = function (password) {
+  return compareSync(password, this.password)
+}
+
+userSchema.methods.generateToken = function () {
+  const token = sign(this._id.toString(), CONFIG.JWT_SECRET_KEY)
+  return token
+}
 
 // virtauls
 userSchema.virtual("fullName").get(() => `${this.firstName} ${this.lastName}}`)
