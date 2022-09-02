@@ -18,4 +18,4 @@ const httpGetUserAppliedJobs = (req, res) => {
   res.status(200).json({ success: true, message: CONTENTS.GET_JOBPOSTS_SUCCESS_MSG, posts: userAppliedJobs })
 }
 
-module.exports = { httpGetUser, httpGetUserPostedJobs }
+module.exports = { httpGetUser, httpGetUserPostedJobs, httpGetUserAppliedJobs }
