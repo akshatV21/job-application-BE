@@ -32,7 +32,7 @@ const validateLoginRequest = (req, res, next) => {
   next()
 }
 
-const authorizeUser = (req, res, next) => {
+const authorizeUser = async (req, res, next) => {
   const authHeader = req.headers["authorization"]
   if (!authHeader) return res.status(401).json({ success: false, message: CONTENTS.NULL_AUTH_HEADER })
 
