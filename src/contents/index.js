@@ -8,6 +8,8 @@ CONTENTS.REGISTER_SUCCESS_MSG = username => `Successfully registered ${username}
 CONTENTS.LOGGEDIN_SUCCESS_MSG = username => `Successfully logged in! ${username}`
 CONTENTS.JOBPOST_REG_SUCCESS_MSG = "Job post saved successfully!"
 CONTENTS.GET_JOBS_SUCCESS_MSG = "Job posts fetched successfully!"
+CONTENTS.GET_USER_SUCCESS_MSG = "User fetched successfully!"
+CONTENTS.GET_JOBPOSTS_SUCCESS_MSG = "Job posts fetched successfully!"
 
 // error msgs
 CONTENTS.NULL_USERNAME_MSG = "Please enter a username!!"

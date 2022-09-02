@@ -3,9 +3,14 @@ const CONTENTS = require("../../contents/index")
 
 const httpRegisterNewJobPost = async (req, res, next) => {
   try {
+    const user = req.user
     const post = new JobPostModel(req.jobPost)
-    await post.save()
 
+    user.jobsPosted.push(post._id)
+
+    await user.save()
+    await post.save()
+    
     res.status(201).json({ success: true, message: CONTENTS.JOBPOST_REG_SUCCESS_MSG, post })
   } catch (error) {
     console.log("[ERROR] - Error while registering new post")

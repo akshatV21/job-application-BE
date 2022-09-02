@@ -2,6 +2,7 @@ const { Schema, Types, model } = require("mongoose")
 
 const jobPostSchema = new Schema(
   {
+    userID: { type: Types.ObjectId, required: true },
     company: {
       name: { type: String, required: true },
       email: { type: String },
