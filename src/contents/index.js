@@ -7,6 +7,7 @@ CONTENTS.MONGO_CONN_SUCCESS_MSG = `Connected to mongo database!!`
 CONTENTS.REGISTER_SUCCESS_MSG = username => `Successfully registered ${username}`
 CONTENTS.LOGGEDIN_SUCCESS_MSG = username => `Successfully logged in! ${username}`
 CONTENTS.JOBPOST_REG_SUCCESS_MSG = "Job post saved successfully!"
+CONTENTS.GET_JOBS_SUCCESS_MSG = "Job posts fetched successfully!"
 
 // error msgs
 CONTENTS.NULL_USERNAME_MSG = "Please enter a username!!"
@@ -29,5 +30,7 @@ CONTENTS.NULL_SKILLS_MSG = "Please enter skills!"
 CONTENTS.NULL_JOBTYPE_MSG = "Please enter job type!"
 CONTENTS.NULL_REMOTE_MSG = "Please enter remote work!"
 CONTENTS.NULL_SCHEDULE_MSG = "Please enter schedule!"
+CONTENTS.NEW_POST_ERR_MSG = "Error creating new job post!"
+CONTENTS.GET_JOBS_ERR_MSG = "Error getting job posts!"
 
 module.exports = CONTENTS

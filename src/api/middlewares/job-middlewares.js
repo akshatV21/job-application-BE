@@ -14,4 +14,12 @@ const validateJobPostingRequest = (req, res, next) => {
   next()
 }
 
-module.exports = { validateJobPostingRequest }
+const validateQueryParameters = (req, res, next) => {
+  const skillsQuery = req.query.skills
+
+  req.skills = skillsQuery ? skillsQuery.split(",") : req.user
+  req.remote = typeof req.remote === "boolean" ? req.query.remote : undefined
+  next()
+}
+
+module.exports = { validateJobPostingRequest, validateQueryParameters }
