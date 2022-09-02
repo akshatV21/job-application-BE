@@ -10,7 +10,7 @@ const httpRegisterNewJobPost = async (req, res, next) => {
 
     await user.save()
     await post.save()
-    
+
     res.status(201).json({ success: true, message: CONTENTS.JOBPOST_REG_SUCCESS_MSG, post })
   } catch (error) {
     console.log("[ERROR] - Error while registering new post")
