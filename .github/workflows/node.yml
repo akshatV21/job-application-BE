@@ -1,0 +1,19 @@
+name: Node CI
+on:
+  push:
+    branches: [mine]
+  pull_request:
+    branches: [master]
+jobs:
+  install:
+    env:
+      MONGO_URL: mongodb+srv://akshat21:aku1985pika@cluster0.ew0oz.mongodb.net/job-app?retryWrites=true&w=majority
+      JWT_SECRET_KEY: secret_key
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "16.14"
+      - run: npm install
+      - run: npm run test
