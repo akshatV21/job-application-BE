@@ -32,12 +32,12 @@ const validateLoginRequest = (req, res, next) => {
   next()
 }
 
-const authorizeUser = async (req, res, next) => {
+const authorizeUser = (req, res, next) => {
   const authHeader = req.headers["authorization"]
   if (!authHeader) return res.status(401).json({ success: false, message: CONTENTS.NULL_AUTH_HEADER })
 
   const token = authHeader.split(" ")[1]
-  verify(token, CONFIG.JWT_SECRET_KEY, (err, token) => {
+  verify(token, CONFIG.JWT_SECRET_KEY, async (err, token) => {
     if (err) {
       res.status(401).json({ success: false, message: CONTENTS.INVALID_TOKEN_MSG })
       return
