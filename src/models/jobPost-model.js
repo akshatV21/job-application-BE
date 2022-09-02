@@ -20,6 +20,7 @@ const jobPostSchema = new Schema(
     salary: { type: Number },
     schedule: { type: String, required: true },
     remoteWork: { type: Boolean, required: true },
+    experience: { type: Number },
     education: { type: String },
     vacancies: { type: Number },
     applicants: { type: [Types.ObjectId], default: [], ref: "users" },
