@@ -10,3 +10,7 @@ jobPostRouter.post("/new", authorizeUser, validateJobPostingRequest, httpRegiste
 jobPostRouter.get("/", authorizeUser, validateQueryParameters, httpGetJobPostsForUser)
 
 module.exports = jobPostRouter
+
+// --------------------------------------------------------------------------------------------------------------------
+const upn = "7 9 0 7 3 3"
+const pin = "U K Q K"
