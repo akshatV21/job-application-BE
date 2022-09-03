@@ -40,5 +40,6 @@ CONTENTS.GET_USER_ERR_MSG = "Cannot fetch user data!"
 CONTENTS.GET_JOBPOSTS_ERR_MSG = "Cannot fetch user job posts!"
 CONTENTS.SAVED_POST_ERR_MSG = "Error saving the job post!"
 CONTENTS.POST_NOT_FOUND_ERR_MSG = "Job post not found!"
+CONTENTS.NULL_POSTID_MSG = "Job post is null!"
 
 module.exports = CONTENTS
