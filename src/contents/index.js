@@ -11,6 +11,7 @@ CONTENTS.GET_JOBS_SUCCESS_MSG = "Job posts fetched successfully!"
 CONTENTS.GET_USER_SUCCESS_MSG = "User fetched successfully!"
 CONTENTS.GET_JOBPOSTS_SUCCESS_MSG = "Job posts fetched successfully!"
 CONTENTS.SAVED_POST_SUCCESS_MSG = "Job post saved successfully!"
+CONTENTS.UNSAVED_POST_SUCCESS_MSG = "Job post unsaved successfully!"
 
 // error msgs
 CONTENTS.NULL_USERNAME_MSG = "Please enter a username!!"
@@ -38,5 +39,6 @@ CONTENTS.GET_JOBS_ERR_MSG = "Error getting job posts!"
 CONTENTS.GET_USER_ERR_MSG = "Cannot fetch user data!"
 CONTENTS.GET_JOBPOSTS_ERR_MSG = "Cannot fetch user job posts!"
 CONTENTS.SAVED_POST_ERR_MSG = "Error saving the job post!"
+CONTENTS.POST_NOT_FOUND_ERR_MSG = "Job post not found!"
 
 module.exports = CONTENTS

@@ -37,7 +37,7 @@ const httpSaveJobPost = async (req, res) => {
 
     user.savedJobPosts.push(postId)
     await user.save()
-    res.status(200).json({ success: true, message: CONTENTS.SAVED_POST_SUCCESS_MSG, user: user })
+    res.status(200).json({ success: true, message: CONTENTS.SAVED_POST_SUCCESS_MSG, user: user.savedJobPosts })
   } catch (error) {
     console.log("[ERROR] - Error while saving a job post")
     console.error(error)
@@ -45,4 +45,16 @@ const httpSaveJobPost = async (req, res) => {
   }
 }
 
-module.exports = { httpGetUser, httpGetUserPostedJobs, httpGetUserAppliedJobs, httpSaveJobPost }
+const httpRemoveSavedJobPost = async (req, res) => {
+  const user = req.user
+  const postId = job.postId
+
+  const postIdIndex = user.savedJobPosts.findIndex(post => post._id === postId)
+  if (postIdIndex === -1) return res.status(404).json({ success: false, message: CONTENTS.POST_NOT_FOUND_ERR_MSG })
+
+  user.savedJobPosts.splice(postIdIndex, 1)
+  await user.save()
+  res.status(200).json({ success: true, message: CONTENTS.UNSAVED_POST_SUCCESS_MSG, user: user.savedJobPosts })
+}
+
+module.exports = { httpGetUser, httpGetUserPostedJobs, httpGetUserAppliedJobs, httpSaveJobPost, httpRemoveSavedJobPost }
