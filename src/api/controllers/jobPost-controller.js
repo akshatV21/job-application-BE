@@ -1,7 +1,7 @@
 const JobPostModel = require("../../models/jobPost-model")
 const CONTENTS = require("../../contents/index")
 
-const httpRegisterNewJobPost = async (req, res, next) => {
+const httpRegisterNewJobPost = async (req, res) => {
   try {
     const user = req.user
     const post = new JobPostModel(req.jobPost)
