@@ -43,6 +43,7 @@ describe("POST /api/auth/register", () => {
         lookingFor: [],
         createdAt: expect.any(String),
         updatedAt: expect.any(String),
+        applications: [],
       },
     }
 
