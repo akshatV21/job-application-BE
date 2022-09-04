@@ -1,4 +1,5 @@
 const JobPostModel = require("../../models/jobPost-model")
+const JobApplicationModel = require("../../models/jobApplication-model")
 const CONTENTS = require("../../contents/index")
 
 const httpRegisterNewJobPost = async (req, res) => {
@@ -33,4 +34,24 @@ const httpGetJobPostsForUser = async (req, res) => {
   }
 }
 
-module.exports = { httpRegisterNewJobPost, httpGetJobPostsForUser }
+const httpApplyToJobPost = async (req, res) => {
+  try {
+    const user = req.user
+    const post = req.post
+    const application = await new JobApplicationModel({ user: req.user._id, jobPost: req.postId, links: req.body.links })
+      .populate("users")
+      .populate("posts")
+
+    user.applications.push(application._id)
+    post.applications.push(application._id)
+
+    await Promise.all([user.save(), application.save(), post.save()])
+    res.status(201).json({ success: true, message: CONTENTS.APPLICATION_SUCCESS_MSG, application: application })
+  } catch (error) {
+    console.log("[ERROR] - Error while saving job application!")
+    console.error(error)
+    res.status(500).json({ success: false, message: CONTENTS.APPLICATION_ERR_MSG })
+  }
+}
+
+module.exports = { httpRegisterNewJobPost, httpGetJobPostsForUser, httpApplyToJobPost }

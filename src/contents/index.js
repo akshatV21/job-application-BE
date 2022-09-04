@@ -12,6 +12,7 @@ CONTENTS.GET_USER_SUCCESS_MSG = "User fetched successfully!"
 CONTENTS.GET_JOBPOSTS_SUCCESS_MSG = "Job posts fetched successfully!"
 CONTENTS.SAVED_POST_SUCCESS_MSG = "Job post saved successfully!"
 CONTENTS.UNSAVED_POST_SUCCESS_MSG = "Job post unsaved successfully!"
+CONTENTS.APPLICATION_SUCCESS_MSG = "Application saved successfully!"
 
 // error msgs
 CONTENTS.NULL_USERNAME_MSG = "Please enter a username!!"
@@ -41,5 +42,6 @@ CONTENTS.GET_JOBPOSTS_ERR_MSG = "Cannot fetch user job posts!"
 CONTENTS.SAVED_POST_ERR_MSG = "Error saving the job post!"
 CONTENTS.POST_NOT_FOUND_ERR_MSG = "Job post not found!"
 CONTENTS.NULL_POSTID_MSG = "Job post is null!"
+CONTENTS.APPLICATION_ERR_MSG = "Error saving the application!"
 
 module.exports = CONTENTS
