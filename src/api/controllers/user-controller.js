@@ -57,4 +57,24 @@ const httpRemoveSavedJobPost = async (req, res) => {
   res.status(200).json({ success: true, message: CONTENTS.UNSAVED_POST_SUCCESS_MSG, user: user.savedJobPosts })
 }
 
-module.exports = { httpGetUser, httpGetUserPostedJobs, httpGetUserAppliedJobs, httpSaveJobPost, httpRemoveSavedJobPost }
+const httpGetUserApplications = async (req, res) => {
+  try {
+    const user = req.user
+    const applications = await user.populate("applications").applications.reverse()
+
+    res.status(200).json({ success: true, message: CONTENTS.GET_APPLICATION_SUCCESS_MSG, applications })
+  } catch (error) {
+    console.log("[ERROR] - Error while fetching applications")
+    console.error(error)
+    res.status(500).json({ success: false, message: CONTENTS.GET_APPLICATION_ERR_MSG })
+  }
+}
+
+module.exports = {
+  httpGetUser,
+  httpGetUserPostedJobs,
+  httpGetUserAppliedJobs,
+  httpSaveJobPost,
+  httpRemoveSavedJobPost,
+  httpGetUserApplications,
+}
