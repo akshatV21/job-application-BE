@@ -15,3 +15,5 @@ const jobApplicationSchema = new Schema(
 )
 
 const JobApplicationModel = model("application", jobApplicationSchema)
+
+module.exports = JobApplicationModel
