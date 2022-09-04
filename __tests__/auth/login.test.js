@@ -51,6 +51,7 @@ describe("POST /api/auth/login", () => {
         createdAt: expect.any(String),
         updatedAt: expect.any(String),
         token: expect.any(String),
+        applications: [],
       },
     }
 

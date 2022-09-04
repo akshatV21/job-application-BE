@@ -16,6 +16,7 @@ const userSchema = new Schema(
     skills: { type: [String], required: true },
     experience: { type: String },
     lookingFor: { type: [String] },
+    applications: { type: [Types.ObjectId], default: [], ref: "applications" },
   },
   { timestamps: true }
 )
